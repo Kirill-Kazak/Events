@@ -20,3 +20,9 @@ services:
     container_name: postgres_db
     env_file:
       - db_keys.txt
+
+  adminer:
+    image: adminer
+    container_name: admin_db1
+    ports:
+      - "8080:8080"
