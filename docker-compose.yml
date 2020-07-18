@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_web1
+    container_name: django_web3
     volumes:
       - ./src:/src
     ports:
