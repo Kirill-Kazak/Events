@@ -4,20 +4,18 @@ from rest_framework.generics import (
     ListAPIView,
     RetrieveUpdateDestroyAPIView
 )
-from bookshop.serializer import (
-    ListEventSerializer,
-    CreateEventSerializer,
-)
+from bookshop.serializer import EventSerializer
+
 from bookshop.models import Event
 
 
 class ListEvent(ListAPIView):
-    serializer_class = ListEventSerializer
+    serializer_class = EventSerializer
     queryset = Event.objects.all()
 
 class CreateEvent(CreateAPIView):
-    serializer_class = CreateEventSerializer
+    serializer_class = EventSerializer
 
 class RetriveUpdateDestroy(RetrieveUpdateDestroyAPIView):
-    serializer_class = CreateEventSerializer
+    serializer_class = EventSerializer
     queryset = Event.objects.all()
