@@ -5,13 +5,6 @@ from logging import getLogger
 
 logger = getLogger('django')
 
-
-# class ListEventSerializer(ModelSerializer):
-#     class Meta:
-#         model = Event
-#         fields = ('title', 'date_start', 'date_stop', 'reminder4api', 'id')
-
-
 class EventSerializer(ModelSerializer):
     tmp_duration = CharField(source='reminder4api')
 

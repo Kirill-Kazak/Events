@@ -33,11 +33,6 @@ class Event(models.Model):
         verbose_name='напомнить за...',
         choices=choice_delta)
 
-    # tmp_duration_field = models.CharField(
-    #     max_length=100,
-    #     blank=True,
-    #     null=True
-    # )
 
     @property
     def reminder4api(self):
@@ -57,8 +52,4 @@ class Event(models.Model):
                 second=59
             )
 
-        # if self.tmp_duration_field is not None:
-        #     for i in self.choice_delta:
-        #         if self.tmp_duration_field == i[1]:
-        #             self.reminder = i[0]
-        # super().save(**kwargs)
+
