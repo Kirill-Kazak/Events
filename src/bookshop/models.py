@@ -1,6 +1,7 @@
 from datetime import timedelta
 from django.db import models
 from logging import getLogger
+from django.contrib.auth.models import User
 
 
 logger = getLogger('django')
@@ -18,11 +19,17 @@ class Event(models.Model):
         db_table = 'my_event'
 
     choice_delta = CHOICE_DELTA
+    user_event = models.ForeignKey(User,
+                                   on_delete=models.CASCADE,
+                                   related_name='user',
+                                   verbose_name='чье событие',
+                                   )
     title = models.CharField(
         max_length=100,
         verbose_name='Название события')
     date_start = models.DateTimeField(
         verbose_name='Начало события'
+        
     )
     date_stop = models.DateTimeField(
         verbose_name='Окончание события',
@@ -31,8 +38,11 @@ class Event(models.Model):
     )
     reminder = models.DurationField(
         verbose_name='напомнить за...',
-        choices=choice_delta)
-
+        choices=choice_delta
+    )
+    need_remind = models.BooleanField(verbose_name='Напомнить?', 
+                                      default=False
+                                      )
 
     @property
     def reminder4api(self):

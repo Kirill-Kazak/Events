@@ -10,7 +10,11 @@ class EventSerializer(ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('title', 'date_start', 'date_stop', 'tmp_duration')
+        fields = ('title',
+                  'date_start',
+                  'date_stop',
+                  'tmp_duration',
+                  'need_remind')
 
 
     def save(self, *args, **kwargs):
