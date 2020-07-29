@@ -6,4 +6,5 @@ urlpatterns = [
     path('createEvent/', views.CreateEvent.as_view()),
     path('RUDEvent/<int:pk>/', views.RetriveUpdateDestroy.as_view()),
     path('get/<str:date>/', views.GetEvents.as_view()),
+    path('gettoken/', views.GetToken.as_view()),
 ]

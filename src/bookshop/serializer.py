@@ -14,7 +14,9 @@ class EventSerializer(ModelSerializer):
                   'date_start',
                   'date_stop',
                   'tmp_duration',
-                  'need_remind')
+                  'need_remind',
+                  # 'user_event'
+                  )
 
 
     def save(self, *args, **kwargs):
@@ -24,3 +26,6 @@ class EventSerializer(ModelSerializer):
                 self.validated_data['reminder'] = item[0]
         del self.validated_data['reminder4api']
         super().save(*args, **kwargs)
+
+
+

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'bookshop',
     'rest_framework',
     'djoser',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,8 +129,15 @@ USE_L10N = True
 USE_TZ = True
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S"
+    # 'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S"
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST_USER = "kirill.bar.kazak@gmail.com"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)

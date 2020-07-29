@@ -12,14 +12,16 @@ CHOICE_DELTA = [
     (timedelta(days=1), 'За день'),
     (timedelta(weeks=1), 'За неделю')
 ]
+
+
 class Event(models.Model):
     class Meta:
         verbose_name_plural = 'события'
         verbose_name = 'событие'
-        db_table = 'my_event'
+        db_table = "my_event"
 
     choice_delta = CHOICE_DELTA
-    user_event = models.ForeignKey(User,
+    User_event = models.ForeignKey(User,
                                    on_delete=models.CASCADE,
                                    related_name='user',
                                    verbose_name='чье событие',
@@ -29,7 +31,6 @@ class Event(models.Model):
         verbose_name='Название события')
     date_start = models.DateTimeField(
         verbose_name='Начало события'
-        
     )
     date_stop = models.DateTimeField(
         verbose_name='Окончание события',
@@ -61,5 +62,29 @@ class Event(models.Model):
                 minute=59,
                 second=59
             )
+        super().save()
+
+class Holiday(models.Model):
+    class Meta:
+        verbose_name='праздник'
+        verbose_name_plural = 'праздники'
+    title = models.CharField(
+        max_length=100,
+        unique=True,
+        verbose_name='название праздника')
+    date_start = models.DateTimeField(verbose_name='начало праздника')
+    duration = models.DurationField(verbose_name='длительность')
+    descriptions = models.TextField(verbose_name='описание')
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
+
 
 
